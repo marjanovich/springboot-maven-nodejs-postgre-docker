@@ -1,3 +1,9 @@
+FROM alpine/git
+WORKDIR /app
+RUN git clone https://github.com/kkenan/basic-microservices
+
+
+
 FROM maven:3.6.0-jdk-11-slim AS build
 COPY src /home/app/src
 COPY pom.xml /home/app
