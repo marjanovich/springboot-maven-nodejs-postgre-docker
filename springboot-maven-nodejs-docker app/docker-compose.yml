@@ -1,0 +1,40 @@
+version: '3.6'
+services:
+  db:
+    image: postgres
+    #hostname: postgres
+    container_name: postgresql
+    environment:
+      POSTGRES_PASSWORD: DemoPa$$
+      POSTGRES_USER: demouser
+      POSTGRES_DB: demodb
+    ports:
+      - "5432:5432"
+    
+    
+  
+  back:
+    build: 
+      context: ./spring-boot-app
+      target:  spring-boot-app
+    image: zeljko/spring-boot-app225
+    container_name: spring-boot-app225
+    #environment:
+    #  WAIT_HOSTS: postgres:5432
+
+
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+ 
+
+  front:
+    build: ./node-app
+    image: zeljko/node-app1
+    container_name: node-app1
+    ports:
+      - 8081:8081
+
+
+
