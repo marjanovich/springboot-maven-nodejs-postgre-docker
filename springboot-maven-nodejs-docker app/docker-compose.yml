@@ -13,7 +13,7 @@ services:
     
     
   
-  back:
+  spring-boot-app:
     build: 
       context: ./spring-boot-app
       target:  spring-boot-app
@@ -29,7 +29,7 @@ services:
       - db
  
 
-  front:
+  node-app:
     build: ./node-app
     image: zeljko/node-app1
     container_name: node-app1
